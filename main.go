@@ -6,58 +6,136 @@ import (
 	"os"
 )
 
+// Config holds the application configuration
+type Config struct {
+	DictPath  string
+	Write     bool
+	Scan      bool
+	Check     bool
+	DryRun    bool
+	InputFile string
+}
+
 func main() {
-	// 1. Define command-line flags
-	var (
-		dictPath   = flag.String("d", "dict.yaml", "Dictionary file path")
-		write      = flag.Bool("w", false, "Write back to the file")
-		scan       = flag.Bool("s", false, "Scan mode")
-		check      = flag.Bool("c", false, "Check dictionary validity")
-		dryRun     = flag.Bool("dry-run", false, "Dry run mode")
-	)
+
+	// 1. Define and parse command-line flags
+
+	dictPath := flag.String("d", "dict.yaml", "Dictionary file path")
+
+	write := flag.Bool("w", false, "Write back to the file")
+
+	scan := flag.Bool("s", false, "Scan mode")
+
+	check := flag.Bool("c", false, "Check dictionary validity")
+
+	dryRun := flag.Bool("dry-run", false, "Dry run mode")
+
+
 
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %s [options] <input_file>\n", os.Args[0])
+
+		fmt.Fprintf(os.Stderr, "Usage: %s [options] [input_file]\n", os.Args[0])
+
 		flag.PrintDefaults()
+
 	}
 
 	flag.Parse()
 
-	// TODO: Remove this block when the flags are actually used.
-	// This is a temporary workaround to prevent "declared and not used" errors.
-	_ = *dictPath
-	_ = *scan
-	_ = *check
-	_ = *dryRun
 
-	// 2. Check for the input file path
-	if flag.NArg() != 1 {
-		flag.Usage()
-		os.Exit(1)
+
+	cfg := &Config{
+
+		DictPath: *dictPath,
+
+		Write:    *write,
+
+		Scan:     *scan,
+
+		Check:    *check,
+
+		DryRun:   *dryRun,
+
 	}
-	filepath := flag.Arg(0)
 
-	// 3. Read the specified file
-	content, err := os.ReadFile(filepath)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: Failed to read file: %v\n", err)
+
+
+	// Get the input file path if not in check mode
+
+	if !cfg.Check && flag.NArg() != 1 {
+
+		flag.Usage()
+
 		os.Exit(1)
+
+	}
+
+	if flag.NArg() == 1 {
+
+		cfg.InputFile = flag.Arg(0)
+
+	}
+
+
+
+	if err := run(cfg); err != nil {
+
+		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+
+		os.Exit(1)
+
+	}
+
+}
+
+
+
+
+func run(cfg *Config) error {
+	// 2. Handle --check mode
+	if cfg.Check {
+		return validateDictionary(cfg.DictPath)
+	}
+
+	// 4. Load the dictionary
+	termMap, err := LoadDictionary(cfg.DictPath)
+	if err != nil {
+		return err
+	}
+	// TODO: This is a placeholder to satisfy the "variable declared and not used" error.
+	_ = termMap
+	_ = cfg.Scan
+	_ = cfg.DryRun
+
+
+	// 5. Read the specified file
+	content, err := os.ReadFile(cfg.InputFile)
+	if err != nil {
+		return fmt.Errorf("failed to read file: %w", err)
 	}
 
 	// In this initial version, "processedContent" is the same as the original.
 	processedContent := content
 
-	// 4. Output the content
-	if *write {
-		// Write back to the file
-		err := os.WriteFile(filepath, processedContent, 0644)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error: Failed to write to file: %v\n", err)
-			os.Exit(1)
+	// 6. Output the content
+	if cfg.Write {
+		if err := os.WriteFile(cfg.InputFile, processedContent, 0644); err != nil {
+			return fmt.Errorf("failed to write to file: %w", err)
 		}
-		fmt.Printf("File '%s' has been updated.\n", filepath)
+		fmt.Printf("File '%s' has been updated.\n", cfg.InputFile)
 	} else {
-		// Print to stdout
 		fmt.Print(string(processedContent))
 	}
+
+	return nil
+}
+
+// validateDictionary performs validation on the dictionary file.
+func validateDictionary(path string) error {
+	_, err := LoadDictionary(path)
+	if err != nil {
+		return fmt.Errorf("dictionary validation failed: %w", err)
+	}
+	fmt.Printf("Dictionary at '%s' is valid.\n", path)
+	return nil
 }
