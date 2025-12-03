@@ -15,7 +15,7 @@ This document defines the development process and guidelines for how Gemini will
 This project will follow an Issue-Driven Development workflow.
 
 1.  **Issue Creation by Gemini:** Before starting development, based on the `REQUIREMENTS.md`, Gemini will create a GitHub Issue for the development plan.
-2.  **Pull Request by Gemini:** Gemini will implement a feature or fix. When creating a Pull Request, it will be based on the corresponding Issue.
+2. **Pull Request by Gemini:** Gemini will implement a feature or fix. When creating a Pull Request, it will be based on the corresponding Issue and written in Japanese.
 3.  **Code Review by You:** You will review the submitted Pull Request, providing feedback or approval.
 4.  **Merge:** Once approved, you will merge the Pull Request into the main branch, which will automatically close the corresponding Issue.
 
