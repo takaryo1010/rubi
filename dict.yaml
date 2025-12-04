@@ -1,4 +1,7 @@
 terms:
+  - term: "Go"
+    yomi: "ゴー"
+
   - term: "Vite"
     yomi: "ヴィート"
     ref: "[https://ja.vitejs.dev/](https://ja.vitejs.dev/)"
