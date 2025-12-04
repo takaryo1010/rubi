@@ -156,7 +156,7 @@ Vite is a fast build tool. Vite is awesome.
 
 #### `rubi init`
 
-GitHubリポジリから `dict.yaml` をダウンロードし、現在のディレクトリに保存します。
+GitHubリポジトリから `dict.yaml` をダウンロードし、現在のディレクトリに保存します。
 
 ```bash
 ./rubi init # デフォルトのリポジトリからダウンロード
@@ -207,9 +207,9 @@ terms:
 
 ## 貢献者
 
-このプロジェクトは、以下の素晴らしい方々によって支えられています。ご貢献ありがとうございます！
-
--   [あなたのGitHubユーザー名](あなたのGitHubプロフィールURL)
+<!-- CONTRIBUTORS_START -->
+- [takaryo1010](https://github.com/takaryo1010)
+<!-- CONTRIBUTORS_END -->
 
 ## 貢献ガイドライン
 
