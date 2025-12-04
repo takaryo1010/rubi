@@ -36,3 +36,9 @@ rubi
 test.md
 .gemini/tmp/
 *.save
+dict.yaml
+dict_invalid.yaml
+dict_missing.yaml
+test_simple.md
+japanese_example.md
+cmd/
