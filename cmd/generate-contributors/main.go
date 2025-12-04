@@ -103,8 +103,8 @@ func updateReadme(readmePath, contributorsMarkdown string) error {
 	var buffer bytes.Buffer
 	buffer.Write(content[:startIndex+len(startMarker)]) // Write content before start marker
 	buffer.WriteString("\n")
-	buffer.WriteString(contributorsMarkdown)             // Write new contributors list
-	buffer.WriteString(string(content[endIndex:]))              // Write content from end marker onwards
+	buffer.WriteString(contributorsMarkdown)       // Write new contributors list
+	buffer.WriteString(string(content[endIndex:])) // Write content from end marker onwards
 
 	if err := os.WriteFile(readmePath, buffer.Bytes(), 0644); err != nil { // Use os.WriteFile
 		return fmt.Errorf("failed to write updated README.md: %w", err)

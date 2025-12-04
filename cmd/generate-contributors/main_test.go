@@ -147,7 +147,7 @@ func TestRunEndToEnd(t *testing.T) {
 	mockContributorsJSON := `[{"login": "enduser1", "html_url": "https://github.com/enduser1", "type": "User"}]`
 	initialReadme := "\n# Project Title\n\n## 貢献者\n<!-- CONTRIBUTORS_START -->\n<!-- CONTRIBUTORS_END -->\n"
 	expectedFinalReadme := "\n# Project Title\n\n## 貢献者\n<!-- CONTRIBUTORS_START -->\n- [enduser1](https://github.com/enduser1)\n<!-- CONTRIBUTORS_END -->\n"
-	
+
 	// Create a temporary directory for the test
 	tmpDir := t.TempDir()
 	originalWd, err := os.Getwd()
@@ -169,7 +169,6 @@ func TestRunEndToEnd(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to write initial README.md: %v", err)
 	}
-
 
 	oldCmdRunner := cmdRunner
 	cmdRunner = func(name string, arg ...string) *exec.Cmd {
