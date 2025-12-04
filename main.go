@@ -64,9 +64,59 @@ func runCLI() error {
 		mainFlagSet.PrintDefaults()
 	}
 
-	// If no arguments or first arg is a flag, parse main flags
-	if len(os.Args) < 2 || strings.HasPrefix(os.Args[1], "-") {
-		mainFlagSet.Parse(os.Args[1:])
+	// Determine subcommand or main command
+	args := os.Args[1:]
+	if len(args) == 0 { // No arguments, show main usage
+		mainFlagSet.Usage()
+		return nil // Exit cleanly after showing usage
+	}
+
+	// Check if the first non-flag argument is a known subcommand
+	// We need to peek ahead for subcommands because mainFlagSet might consume it.
+	subcommand := ""
+	if !strings.HasPrefix(args[0], "-") { // If first arg is not a flag, it might be a subcommand
+		switch args[0] {
+		case "init", "dict", "help":
+			subcommand = args[0]
+		}
+	}
+
+	if subcommand != "" {
+		// Dispatch to subcommand handlers
+		switch subcommand {
+		case "init":
+			initFlagSet.Usage = func() {
+				fmt.Fprintf(os.Stderr, "Usage of %s init:\n", os.Args[0])
+				fmt.Fprintf(os.Stderr, "  %s init [options]\n", os.Args[0])
+				initFlagSet.PrintDefaults()
+			}
+			initFlagSet.Parse(args[1:])
+			return handleInitCommand(*initRepo, *initOverwrite)
+		case "dict":
+			if len(args) < 2 {
+				return fmt.Errorf("missing subcommand for 'dict'\n\nUsage: %s dict <command> [options]\nCommands:\n  update", os.Args[0])
+			}
+			switch args[1] { // Check second argument for 'dict' subcommand
+			case "update":
+				dictUpdateFlagSet.Usage = func() {
+					fmt.Fprintf(os.Stderr, "Usage of %s dict update:\n", os.Args[0])
+					fmt.Fprintf(os.Stderr, "  %s dict update [options]\n", os.Args[0])
+					dictUpdateFlagSet.PrintDefaults()
+				}
+				dictUpdateFlagSet.Parse(args[2:])
+				return handleUpdateCommand(*dictUpdateRepo)
+			default:
+				return fmt.Errorf("unknown subcommand for 'dict': %s\n\nUsage: %s dict <command> [options]\nCommands:\n  update", args[1], os.Args[0])
+			}
+		case "help":
+			mainFlagSet.Usage()
+			return nil
+		default:
+			return fmt.Errorf("unknown command: %s", args[0]) // Should not be reached due to subcommand check
+		}
+	} else {
+		// No subcommand found, treat all arguments as belonging to the main command
+		mainFlagSet.Parse(args)
 		cfg := &Config{
 			DictPath:  *dictPath,
 			Write:     *write,
@@ -79,39 +129,6 @@ func runCLI() error {
 			cfg.InputFile = mainFlagSet.Arg(0)
 		}
 		return handleMainCommand(cfg)
-	}
-
-	// Otherwise, parse subcommands
-	switch os.Args[1] {
-	case "init":
-		initFlagSet.Usage = func() {
-			fmt.Fprintf(os.Stderr, "Usage of %s init:\n", os.Args[0])
-			fmt.Fprintf(os.Stderr, "  %s init [options]\n", os.Args[0])
-			initFlagSet.PrintDefaults()
-		}
-		initFlagSet.Parse(os.Args[2:])
-		return handleInitCommand(*initRepo, *initOverwrite)
-	case "dict": // New subcommand 'dict'
-		if len(os.Args) < 3 {
-			return fmt.Errorf("missing subcommand for 'dict'\n\nUsage: %s dict <command> [options]\nCommands:\n  update", os.Args[0])
-		}
-		switch os.Args[2] {
-		case "update":
-			dictUpdateFlagSet.Usage = func() {
-				fmt.Fprintf(os.Stderr, "Usage of %s dict update:\n", os.Args[0])
-				fmt.Fprintf(os.Stderr, "  %s dict update [options]\n", os.Args[0])
-				dictUpdateFlagSet.PrintDefaults()
-			}
-			dictUpdateFlagSet.Parse(os.Args[3:])
-			return handleUpdateCommand(*dictUpdateRepo)
-		default:
-			return fmt.Errorf("unknown subcommand for 'dict': %s\n\nUsage: %s dict <command> [options]\nCommands:\n  update", os.Args[2], os.Args[0])
-		}
-	case "help":
-		mainFlagSet.Usage()
-		return nil
-	default:
-		return fmt.Errorf("unknown command: %s", os.Args[1]) // Removed extra newlines
 	}
 }
 
