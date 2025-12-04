@@ -205,8 +205,14 @@ terms:
 -   リンクのURL部分 (`[text](https://do.not.change/here)`)
 -   HTMLタグ（HTMLブロックやインラインHTML）内 (`<div>...</div>`, `<span>...</span>`)
 
-## 辞書への貢献 (Community Driven)
+## 貢献者
 
-`rubi` の辞書はオープンソースデータとしてGitHub上で管理されています。
+このプロジェクトは、以下の素晴らしい方々によって支えられています。ご貢献ありがとうございます！
 
-辞書に不足している単語や誤りを見つけた場合は、[GitHubリポジリ](https://github.com/takaryo1010/rubi) にPull Requestを送ることで貢献できます。貢献ガイドラインは別途用意される予定です。
+-   [あなたのGitHubユーザー名](あなたのGitHubプロフィールURL)
+
+## 貢献ガイドライン
+
+辞書 (`dict.yaml`) への貢献方法については、[貢献ガイドライン (CONTRIBUTING.md)](./CONTRIBUTING.md) をご覧ください。
+
+ご協力ありがとうございます！
