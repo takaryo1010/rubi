@@ -74,6 +74,26 @@ Vite:rubi is a fast build tool.
 <p><ruby>Vite<rt>ヴィート</rt></ruby> is a fast build tool.</p>
 ```
 
+#### 日本語でのGo言語の例
+
+```markdown
+Go言語はGo:rubiと書きます。
+Go:rubiは素晴らしい言語です。
+```
+
+**実行:**
+
+```bash
+./rubi japanese_example.md
+```
+
+**出力:**
+
+```html
+Go言語は<ruby>Go<rt>ゴー</rt></ruby>と書きます。
+<ruby>Go<rt>ゴー</rt></ruby>は素晴らしい言語です。
+```
+
 ### スキャンモード (`-s` オプション)
 
 ドキュメント全体を走査し、辞書に存在する単語を自動的にルビ付きHTMLに変換します。
@@ -136,7 +156,7 @@ Vite is a fast build tool. Vite is awesome.
 
 #### `rubi init`
 
-GitHubリポジトリから `dict.yaml` をダウンロードし、現在のディレクトリに保存します。
+GitHubリポジリから `dict.yaml` をダウンロードし、現在のディレクトリに保存します。
 
 ```bash
 ./rubi init # デフォルトのリポジトリからダウンロード
@@ -146,7 +166,7 @@ GitHubリポジトリから `dict.yaml` をダウンロードし、現在のデ�
 
 #### `rubi dict update`
 
-GitHubリポジトリから `dict.yaml` をダウンロードし、現在のローカルファイルを上書き更新します。
+GitHubリポジリから `dict.yaml` をダウンロードし、現在のローカルファイルを上書き更新します。
 
 ```bash
 ./rubi dict update # デフォルトのリポジトリから更新
@@ -166,6 +186,9 @@ terms:
   - term: "gRPC"
     yomi: "ジーアールピーシー"
     ref: "https://grpc.io/"
+  
+  - term: "Go"
+    yomi: "ゴー"
 ```
 
 ### 必須フィールド
@@ -186,4 +209,4 @@ terms:
 
 `rubi` の辞書はオープンソースデータとしてGitHub上で管理されています。
 
-辞書に不足している単語や誤りを見つけた場合は、[GitHubリポジトリ](https://github.com/takaryo1010/rubi) にPull Requestを送ることで貢献できます。貢献ガイドラインは別途用意される予定です。
+辞書に不足している単語や誤りを見つけた場合は、[GitHubリポジリ](https://github.com/takaryo1010/rubi) にPull Requestを送ることで貢献できます。貢献ガイドラインは別途用意される予定です。
