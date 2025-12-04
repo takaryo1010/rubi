@@ -1,11 +1,953 @@
 terms:
-  - term: "Go"
-    yomi: "ゴー"
 
-  - term: "Vite"
-    yomi: "ヴィート"
-    ref: "[https://ja.vitejs.dev/guide/](https://ja.vitejs.dev/guide/)"
+    - term: Ajax
+      yomi: エイジャックス
+      ref: https://developer.mozilla.org/ja/docs/Web/Guide/AJAX - Gemini AIにより自動追加
 
-  - term: "gRPC"
-    yomi: "ジーアールピーシー"
-    ref: "[https://grpc.io/](https://grpc.io/)"
+    - term: Angular
+      yomi: アンギュラー
+      ref: https://angular.io/ - Gemini AIにより自動追加
+
+    - term: AngularJS
+      yomi: アンギュラージェイエス
+      ref: https://angularjs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Ansible
+      yomi: アンシブル
+      ref: https://www.ansible.com/ - Gemini AIにより自動追加
+
+    - term: Apache
+      yomi: アパッチ
+      ref: https://httpd.apache.org/ - Gemini AIにより自動追加
+
+    - term: API
+      yomi: エーピーアイ
+      ref: Application Programming Interface - Gemini AIにより自動追加
+
+    - term: Apollo
+      yomi: アポロ
+      ref: https://www.apollographql.com/ - Gemini AIにより自動追加
+
+    - term: Arduino
+      yomi: アルドゥイーノ
+      ref: https://www.arduino.cc/ - Gemini AIにより自動追加
+
+    - term: AWS
+      yomi: エーダブリューエス
+      ref: https://aws.amazon.com/jp/ - Gemini AIにより自動追加
+
+    - term: Axios
+      yomi: アクシオス
+      ref: https://axios-http.com/ - Gemini AIにより自動追加
+
+    - term: Azure
+      yomi: アジュール
+      ref: https://azure.microsoft.com/ja-jp/ - Gemini AIにより自動追加
+
+    - term: Babel
+      yomi: バベル
+      ref: https://babeljs.io/ - Gemini AIにより自動追加
+
+    - term: Bash
+      yomi: バッシュ
+      ref: https://www.gnu.org/software/bash/ - Gemini AIにより自動追加
+
+    - term: Bootstrap
+      yomi: ブートストラップ
+      ref: https://getbootstrap.com/ - Gemini AIにより自動追加
+
+    - term: Bower
+      yomi: バウアー
+      ref: https://bower.io/ - Gemini AIにより自動追加
+
+    - term: C
+      yomi: シー
+      ref: https://en.cppreference.com/w/c - Gemini AIにより自動追加
+
+    - term: C#
+      yomi: シーシャープ
+      ref: https://learn.microsoft.com/ja-jp/dotnet/csharp/ - Gemini AIにより自動追加
+
+    - term: C++
+      yomi: シープラスプラス
+      ref: https://isocpp.org/ - Gemini AIにより自動追加
+
+    - term: Cargo
+      yomi: カーゴ
+      ref: https://doc.rust-lang.org/cargo/ - Gemini AIにより自動追加
+
+    - term: Cassandra
+      yomi: カサンドラ
+      ref: https://cassandra.apache.org/ - Gemini AIにより自動追加
+
+    - term: Chai
+      yomi: チャイ
+      ref: https://www.chaijs.com/ - Gemini AIにより自動追加
+
+    - term: Chrome
+      yomi: クローム
+      ref: https://www.google.com/chrome/ - Gemini AIにより自動追加
+
+    - term: CI/CD
+      yomi: シーアイシーディー
+      ref: Continuous Integration/Continuous Delivery - Gemini AIにより自動追加
+
+    - term: CircleCI
+      yomi: サークルシーアイ
+      ref: https://circleci.com/ - Gemini AIにより自動追加
+
+    - term: Clojure
+      yomi: クロージャー
+      ref: https://clojure.org/ - Gemini AIにより自動追加
+
+    - term: CMake
+      yomi: シーメイク
+      ref: https://cmake.org/ - Gemini AIにより自動追加
+
+    - term: COBOL
+      yomi: コボル
+      ref: Common Business Oriented Language - Gemini AIにより自動追加
+
+    - term: CoffeeScript
+      yomi: コーヒースクリプト
+      ref: https://coffeescript.org/ - Gemini AIにより自動追加
+
+    - term: Composer
+      yomi: コンポーザー
+      ref: https://getcomposer.org/ - Gemini AIにより自動追加
+
+    - term: Conda
+      yomi: コンダ
+      ref: https://docs.conda.io/ - Gemini AIにより自動追加
+
+    - term: Cordova
+      yomi: コルドバ
+      ref: https://cordova.apache.org/ - Gemini AIにより自動追加
+
+    - term: CRUD
+      yomi: クラッド
+      ref: Create, Read, Update, Delete - Gemini AIにより自動追加
+
+    - term: CSS
+      yomi: シーエスエス
+      ref: https://developer.mozilla.org/ja/docs/Web/CSS - Gemini AIにより自動追加
+
+    - term: Cucumber
+      yomi: キューカンバー
+      ref: https://cucumber.io/ - Gemini AIにより自動追加
+
+    - term: Cypress
+      yomi: サイプレス
+      ref: https://www.cypress.io/ - Gemini AIにより自動追加
+
+    - term: Dart
+      yomi: ダート
+      ref: https://dart.dev/ - Gemini AIにより自動追加
+
+    - term: Deno
+      yomi: ディノ
+      ref: https://deno.land/ - Gemini AIにより自動追加
+
+    - term: Django
+      yomi: ジャンゴ
+      ref: https://www.djangoproject.com/ - Gemini AIにより自動追加
+
+    - term: Docker
+      yomi: ドッカー
+      ref: https://www.docker.com/ - Gemini AIにより自動追加
+
+    - term: Dockerfile
+      yomi: ドッカーファイル
+      ref: https://docs.docker.com/engine/reference/builder/ - Gemini AIにより自動追加
+
+    - term: DOM
+      yomi: ドム
+      ref: Document Object Model - Gemini AIにより自動追加
+
+    - term: dotnet
+      yomi: ドットネット
+      ref: https://dotnet.microsoft.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Drupal
+      yomi: ドゥルーパル
+      ref: https://www.drupal.org/ - Gemini AIにより自動追加
+
+    - term: DynamoDB
+      yomi: ダイナモディービー
+      ref: https://aws.amazon.com/jp/dynamodb/ - Gemini AIにより自動追加
+
+    - term: Eclipse
+      yomi: エクリプス
+      ref: https://www.eclipse.org/ - Gemini AIにより自動追加
+
+    - term: Elasticsearch
+      yomi: エラスティックサーチ
+      ref: https://www.elastic.co/elasticsearch/ - Gemini AIにより自動追加
+
+    - term: Electron
+      yomi: エレクトロン
+      ref: https://www.electronjs.org/ - Gemini AIにより自動追加
+
+    - term: Elixir
+      yomi: エリクサー
+      ref: https://elixir-lang.org/ - Gemini AIにより自動追加
+
+    - term: Emacs
+      yomi: イーマックス
+      ref: https://www.gnu.org/software/emacs/ - Gemini AIにより自動追加
+
+    - term: Ember
+      yomi: エンバー
+      ref: https://emberjs.com/ - Gemini AIにより自動追加
+
+    - term: Enzyme
+      yomi: エンザイム
+      ref: https://enzymejs.github.io/enzyme/ - Gemini AIにより自動追加
+
+    - term: Erlang
+      yomi: アーラン
+      ref: https://www.erlang.org/ - Gemini AIにより自動追加
+
+    - term: ESLint
+      yomi: イーエスリント
+      ref: https://eslint.org/ - Gemini AIにより自動追加
+
+    - term: Express
+      yomi: エクスプレス
+      ref: https://expressjs.com/ - Gemini AIにより自動追加
+
+    - term: F#
+      yomi: エフシャープ
+      ref: https://fsharp.org/ - Gemini AIにより自動追加
+
+    - term: FastAPI
+      yomi: ファストエーピーアイ
+      ref: https://fastapi.tiangolo.com/ - Gemini AIにより自動追加
+
+    - term: Fastify
+      yomi: ファスティファイ
+      ref: https://www.fastify.io/ - Gemini AIにより自動追加
+
+    - term: Figma
+      yomi: フィグマ
+      ref: https://www.figma.com/ - Gemini AIにより自動追加
+
+    - term: Firebase
+      yomi: ファイアベース
+      ref: https://firebase.google.com/ - Gemini AIにより自動追加
+
+    - term: Firefox
+      yomi: ファイアフォックス
+      ref: https://www.mozilla.org/firefox/ - Gemini AIにより自動追加
+
+    - term: Flask
+      yomi: フラスク
+      ref: https://flask.palletsprojects.com/ - Gemini AIにより自動追加
+
+    - term: Flutter
+      yomi: フラッター
+      ref: https://flutter.dev/ - Gemini AIにより自動追加
+
+    - term: Fortran
+      yomi: フォートラン
+      ref: Formula Translation - Gemini AIにより自動追加
+
+    - term: GCP
+      yomi: ジーシーピー
+      ref: https://cloud.google.com/ - Gemini AIにより自動追加
+
+    - term: Git
+      yomi: ギット
+      ref: https://git-scm.com/ - Gemini AIにより自動追加
+
+    - term: GitHub
+      yomi: ギットハブ
+      ref: https://github.com/ - Gemini AIにより自動追加
+
+    - term: github
+      yomi: ギットハブ
+      ref: https://github.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Github
+      yomi: ギットハブ
+      ref: https://github.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: GitLab
+      yomi: ギットラボ
+      ref: https://gitlab.com/ - Gemini AIにより自動追加
+
+    - term: gitlab
+      yomi: ギットラボ
+      ref: https://gitlab.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Gitlab
+      yomi: ギットラボ
+      ref: https://gitlab.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Go
+      yomi: ゴー
+      ref: https://go.dev/ - Gemini AIにより自動追加
+
+    - term: golang
+      yomi: ゴーラング
+      ref: https://go.dev/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Golang
+      yomi: ゴーラング
+      ref: https://go.dev/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Gradle
+      yomi: グラドル
+      ref: https://gradle.org/ - Gemini AIにより自動追加
+
+    - term: GraphQL
+      yomi: グラフキューエル
+      ref: https://graphql.org/ - Gemini AIにより自動追加
+
+    - term: Groovy
+      yomi: グルービー
+      ref: https://groovy-lang.org/ - Gemini AIにより自動追加
+
+    - term: gRPC
+      yomi: ジーアールピーシー
+      ref: https://grpc.io/ - Gemini AIにより自動追加
+
+    - term: Grunt
+      yomi: グラント
+      ref: https://gruntjs.com/ - Gemini AIにより自動追加
+
+    - term: Gulp
+      yomi: ガルプ
+      ref: https://gulpjs.com/ - Gemini AIにより自動追加
+
+    - term: Hadoop
+      yomi: ハドゥープ
+      ref: https://hadoop.apache.org/ - Gemini AIにより自動追加
+
+    - term: Haskell
+      yomi: ハスケル
+      ref: https://www.haskell.org/ - Gemini AIにより自動追加
+
+    - term: Heroku
+      yomi: ヘロク
+      ref: https://www.heroku.com/ - Gemini AIにより自動追加
+
+    - term: Hibernate
+      yomi: ハイバーネート
+      ref: https://hibernate.org/ - Gemini AIにより自動追加
+
+    - term: HTML
+      yomi: エイチティーエムエル
+      ref: https://developer.mozilla.org/ja/docs/Web/HTML - Gemini AIにより自動追加
+
+    - term: HTTP
+      yomi: エイチティーティーピー
+      ref: HyperText Transfer Protocol - Gemini AIにより自動追加
+
+    - term: HTTPS
+      yomi: エイチティーティーピーエス
+      ref: HyperText Transfer Protocol Secure - Gemini AIにより自動追加
+
+    - term: Hugging Face
+      yomi: ハギングフェイス
+      ref: https://huggingface.co/ - Gemini AIにより自動追加
+
+    - term: IntelliJ IDEA
+      yomi: インテリジェイアイディア
+      ref: https://www.jetbrains.com/idea/ - Gemini AIにより自動追加
+
+    - term: Ionic
+      yomi: アイオニック
+      ref: https://ionicframework.com/ - Gemini AIにより自動追加
+
+    - term: Java
+      yomi: ジャバ
+      ref: https://www.oracle.com/java/ - Gemini AIにより自動追加
+
+    - term: JavaScript
+      yomi: ジャバスクリプト
+      ref: https://developer.mozilla.org/ja/docs/Web/JavaScript - Gemini AIにより自動追加
+
+    - term: javascript
+      yomi: ジャバスクリプト
+      ref: https://developer.mozilla.org/ja/docs/Web/JavaScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Javascript
+      yomi: ジャバスクリプト
+      ref: https://developer.mozilla.org/ja/docs/Web/JavaScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Jenkins
+      yomi: ジェンキンス
+      ref: https://www.jenkins.io/ - Gemini AIにより自動追加
+
+    - term: Jest
+      yomi: ジェスト
+      ref: https://jestjs.io/ - Gemini AIにより自動追加
+
+    - term: Joomla
+      yomi: ジュームラ
+      ref: https://www.joomla.org/ - Gemini AIにより自動追加
+
+    - term: jQuery
+      yomi: ジェイクエリ
+      ref: https://jquery.com/ - Gemini AIにより自動追加
+
+    - term: JS
+      yomi: ジェイエス
+      ref: JavaScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: js
+      yomi: ジェイエス
+      ref: JavaScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: JSON
+      yomi: ジェイソン
+      ref: https://www.json.org/ - Gemini AIにより自動追加
+
+    - term: JSX
+      yomi: ジェイエスエックス
+      ref: JavaScript XML - Gemini AIにより自動追加
+
+    - term: Julia
+      yomi: ジュリア
+      ref: https://julialang.org/ - Gemini AIにより自動追加
+
+    - term: JUnit
+      yomi: ジェイユニット
+      ref: https://junit.org/ - Gemini AIにより自動追加
+
+    - term: JWT
+      yomi: ジェイダブリューティー
+      ref: JSON Web Token - Gemini AIにより自動追加
+
+    - term: k8s
+      yomi: ケーエイツ
+      ref: https://kubernetes.io/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: K8s
+      yomi: ケーエイツ
+      ref: https://kubernetes.io/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Kafka
+      yomi: カフカ
+      ref: https://kafka.apache.org/ - Gemini AIにより自動追加
+
+    - term: Keras
+      yomi: ケラス
+      ref: https://keras.io/ - Gemini AIにより自動追加
+
+    - term: Kotlin
+      yomi: コトリン
+      ref: https://kotlinlang.org/ - Gemini AIにより自動追加
+
+    - term: Kubernetes
+      yomi: クーバネティス
+      ref: https://kubernetes.io/ - Gemini AIにより自動追加
+
+    - term: Laravel
+      yomi: ララベル
+      ref: https://laravel.com/ - Gemini AIにより自動追加
+
+    - term: Linux
+      yomi: リナックス
+      ref: https://www.linux.org/ - Gemini AIにより自動追加
+
+    - term: Lodash
+      yomi: ローダッシュ
+      ref: https://lodash.com/ - Gemini AIにより自動追加
+
+    - term: Lua
+      yomi: ルア
+      ref: https://www.lua.org/ - Gemini AIにより自動追加
+
+    - term: macOS
+      yomi: マックオーエス
+      ref: https://www.apple.com/macos/ - Gemini AIにより自動追加
+
+    - term: MariaDB
+      yomi: マリアディービー
+      ref: https://mariadb.org/ - Gemini AIにより自動追加
+
+    - term: Markdown
+      yomi: マークダウン
+      ref: https://www.markdownguide.org/ - Gemini AIにより自動追加
+
+    - term: Maven
+      yomi: メイヴン
+      ref: https://maven.apache.org/ - Gemini AIにより自動追加
+
+    - term: Memcached
+      yomi: メムキャッシュディー
+      ref: https://memcached.org/ - Gemini AIにより自動追加
+
+    - term: ML
+      yomi: エムエル
+      ref: Machine Learning - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Mocha
+      yomi: モカ
+      ref: https://mochajs.org/ - Gemini AIにより自動追加
+
+    - term: Mongo
+      yomi: モンゴ
+      ref: https://www.mongodb.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: MongoDB
+      yomi: モンゴディービー
+      ref: https://www.mongodb.com/ - Gemini AIにより自動追加
+
+    - term: MQTT
+      yomi: エムキューティーティー
+      ref: https://mqtt.org/ - Gemini AIにより自動追加
+
+    - term: MVC
+      yomi: エムブイシー
+      ref: Model-View-Controller - Gemini AIにより自動追加
+
+    - term: MVVM
+      yomi: エムブイブイエム
+      ref: Model-View-ViewModel - Gemini AIにより自動追加
+
+    - term: MySQL
+      yomi: マイエスキューエル
+      ref: https://www.mysql.com/ - Gemini AIにより自動追加
+
+    - term: mysql
+      yomi: マイエスキューエル
+      ref: https://www.mysql.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Neo4j
+      yomi: ネオフォージェイ
+      ref: https://neo4j.com/ - Gemini AIにより自動追加
+
+    - term: Nest.js
+      yomi: ネストジェイエス
+      ref: https://nestjs.com/ - Gemini AIにより自動追加
+
+    - term: Next.js
+      yomi: ネクストジェイエス
+      ref: https://nextjs.org/ - Gemini AIにより自動追加
+
+    - term: Nginx
+      yomi: エンジンエックス
+      ref: https://nginx.org/ - Gemini AIにより自動追加
+
+    - term: NixOS
+      yomi: ニックスオーエス
+      ref: https://nixos.org/ - Gemini AIにより自動追加
+
+    - term: Node.js
+      yomi: ノードジェイエス
+      ref: https://nodejs.org/ - Gemini AIにより自動追加
+
+    - term: nodejs
+      yomi: ノードジェイエス
+      ref: https://nodejs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: NodeJS
+      yomi: ノードジェイエス
+      ref: https://nodejs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: NoSQL
+      yomi: ノーエスキューエル
+      ref: Not Only SQL - Gemini AIにより自動追加
+
+    - term: npm
+      yomi: エヌピーエム
+      ref: https://www.npmjs.com/ - Gemini AIにより自動追加
+
+    - term: NumPy
+      yomi: ナムパイ
+      ref: https://numpy.org/ - Gemini AIにより自動追加
+
+    - term: Nuxt
+      yomi: ナクスト
+      ref: https://nuxt.com/ - Gemini AIにより自動追加
+
+    - term: OAuth
+      yomi: オーオース
+      ref: https://oauth.net/ - Gemini AIにより自動追加
+
+    - term: Objective-C
+      yomi: オブジェクティブシー
+      ref: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/ - Gemini AIにより自動追加
+
+    - term: OCaml
+      yomi: オーキャメル
+      ref: https://ocaml.org/ - Gemini AIにより自動追加
+
+    - term: OpenGL
+      yomi: オープンジーエル
+      ref: https://www.opengl.org/ - Gemini AIにより自動追加
+
+    - term: OpenSSL
+      yomi: オープンエスエスエル
+      ref: https://www.openssl.org/ - Gemini AIにより自動追加
+
+    - term: Oracle
+      yomi: オラクル
+      ref: https://www.oracle.com/database/ - Gemini AIにより自動追加
+
+    - term: pandas
+      yomi: パンダス
+      ref: https://pandas.pydata.org/ - Gemini AIにより自動追加
+
+    - term: Perl
+      yomi: パール
+      ref: https://www.perl.org/ - Gemini AIにより自動追加
+
+    - term: PHP
+      yomi: ピーエイチピー
+      ref: https://www.php.net/ - Gemini AIにより自動追加
+
+    - term: pip
+      yomi: ピップ
+      ref: https://pip.pypa.io/ - Gemini AIにより自動追加
+
+    - term: Playwright
+      yomi: プレイライト
+      ref: https://playwright.dev/ - Gemini AIにより自動追加
+
+    - term: Postgres
+      yomi: ポストグレス
+      ref: https://www.postgresql.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: postgres
+      yomi: ポストグレス
+      ref: https://www.postgresql.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: PostgreSQL
+      yomi: ポストグレスキューエル
+      ref: https://www.postgresql.org/ - Gemini AIにより自動追加
+
+    - term: Postman
+      yomi: ポストマン
+      ref: https://www.postman.com/ - Gemini AIにより自動追加
+
+    - term: Prettier
+      yomi: プリティア
+      ref: https://prettier.io/ - Gemini AIにより自動追加
+
+    - term: Pug
+      yomi: パグ
+      ref: https://pugjs.org/ - Gemini AIにより自動追加
+
+    - term: Puppeteer
+      yomi: パペティア
+      ref: https://pptr.dev/ - Gemini AIにより自動追加
+
+    - term: py
+      yomi: パイ
+      ref: Python - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: PyCharm
+      yomi: パイチャーム
+      ref: https://www.jetbrains.com/pycharm/ - Gemini AIにより自動追加
+
+    - term: Python
+      yomi: パイソン
+      ref: https://www.python.org/ - Gemini AIにより自動追加
+
+    - term: python
+      yomi: パイソン
+      ref: https://www.python.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: PyTorch
+      yomi: パイトーチ
+      ref: https://pytorch.org/ - Gemini AIにより自動追加
+
+    - term: R
+      yomi: アール
+      ref: https://www.r-project.org/ - Gemini AIにより自動追加
+
+    - term: RabbitMQ
+      yomi: ラビットエムキュー
+      ref: https://www.rabbitmq.com/ - Gemini AIにより自動追加
+
+    - term: Rails
+      yomi: レイルズ
+      ref: https://rubyonrails.org/ - Gemini AIにより自動追加
+
+    - term: Raspberry Pi
+      yomi: ラズベリーパイ
+      ref: https://www.raspberrypi.org/ - Gemini AIにより自動追加
+
+    - term: RDBMS
+      yomi: アールディービーエムエス
+      ref: Relational Database Management System - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: React
+      yomi: リアクト
+      ref: https://react.dev/ - Gemini AIにより自動追加
+
+    - term: React Native
+      yomi: リアクトネイティブ
+      ref: https://reactnative.dev/ - Gemini AIにより自動追加
+
+    - term: react.js
+      yomi: リアクトジェイエス
+      ref: https://react.dev/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: ReactJS
+      yomi: リアクトジェイエス
+      ref: https://react.dev/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: reactjs
+      yomi: リアクトジェイエス
+      ref: https://react.dev/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Redis
+      yomi: レディス
+      ref: https://redis.io/ - Gemini AIにより自動追加
+
+    - term: Redux
+      yomi: リダックス
+      ref: https://redux.js.org/ - Gemini AIにより自動追加
+
+    - term: REST
+      yomi: レスト
+      ref: Representational State Transfer - Gemini AIにより自動追加
+
+    - term: RSpec
+      yomi: アールスペック
+      ref: https://rspec.info/ - Gemini AIにより自動追加
+
+    - term: Ruby
+      yomi: ルビー
+      ref: https://www.ruby-lang.org/ - Gemini AIにより自動追加
+
+    - term: Rust
+      yomi: ラスト
+      ref: https://www.rust-lang.org/ - Gemini AIにより自動追加
+
+    - term: Sass
+      yomi: サス
+      ref: https://sass-lang.com/ - Gemini AIにより自動追加
+
+    - term: Scala
+      yomi: スカラ
+      ref: https://www.scala-lang.org/ - Gemini AIにより自動追加
+
+    - term: scikit-learn
+      yomi: サイキットラーン
+      ref: https://scikit-learn.org/ - Gemini AIにより自動追加
+
+    - term: Selenium
+      yomi: セレニウム
+      ref: https://www.selenium.dev/ - Gemini AIにより自動追加
+
+    - term: Sinatra
+      yomi: シナトラ
+      ref: https://sinatrarb.com/ - Gemini AIにより自動追加
+
+    - term: Sketch
+      yomi: スケッチ
+      ref: https://www.sketch.com/ - Gemini AIにより自動追加
+
+    - term: Slack
+      yomi: スラック
+      ref: https://slack.com/ - Gemini AIにより自動追加
+
+    - term: SOAP
+      yomi: ソープ
+      ref: Simple Object Access Protocol - Gemini AIにより自動追加
+
+    - term: Solidity
+      yomi: ソリディティ
+      ref: https://soliditylang.org/ - Gemini AIにより自動追加
+
+    - term: Spark
+      yomi: スパーク
+      ref: https://spark.apache.org/ - Gemini AIにより自動追加
+
+    - term: Spring
+      yomi: スプリング
+      ref: https://spring.io/ - Gemini AIにより自動追加
+
+    - term: SQL
+      yomi: エスキューエル
+      ref: Structured Query Language - Gemini AIにより自動追加
+
+    - term: SQLite
+      yomi: エスキューライト
+      ref: https://www.sqlite.org/ - Gemini AIにより自動追加
+
+    - term: SSH
+      yomi: エスエスエイチ
+      ref: Secure Shell - Gemini AIにより自動追加
+
+    - term: Sublime Text
+      yomi: サブライムテキスト
+      ref: https://www.sublimetext.com/ - Gemini AIにより自動追加
+
+    - term: Subversion
+      yomi: サブバージョン
+      ref: https://subversion.apache.org/ - Gemini AIにより自動追加
+
+    - term: Svelte
+      yomi: スベルト
+      ref: https://svelte.dev/ - Gemini AIにより自動追加
+
+    - term: Swift
+      yomi: スウィフト
+      ref: https://www.swift.org/ - Gemini AIにより自動追加
+
+    - term: Symfony
+      yomi: シンフォニー
+      ref: https://symfony.com/ - Gemini AIにより自動追加
+
+    - term: Tailwind CSS
+      yomi: テイルウィンドシーエスエス
+      ref: https://tailwindcss.com/ - Gemini AIにより自動追加
+
+    - term: TensorFlow
+      yomi: テンサーフロー
+      ref: https://www.tensorflow.org/ - Gemini AIにより自動追加
+
+    - term: Terraform
+      yomi: テラフォーム
+      ref: https://www.terraform.io/ - Gemini AIにより自動追加
+
+    - term: ts
+      yomi: ティーエス
+      ref: TypeScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: TS
+      yomi: ティーエス
+      ref: TypeScript - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: TypeScript
+      yomi: タイプスクリプト
+      ref: https://www.typescriptlang.org/ - Gemini AIにより自動追加
+
+    - term: typescript
+      yomi: タイプスクリプト
+      ref: https://www.typescriptlang.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Typescript
+      yomi: タイプスクリプト
+      ref: https://www.typescriptlang.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Ubuntu
+      yomi: ウブントゥ
+      ref: https://ubuntu.com/ - Gemini AIにより自動追加
+
+    - term: UIKit
+      yomi: ユーアイキット
+      ref: https://developer.apple.com/documentation/uikit - Gemini AIにより自動追加
+
+    - term: Unity
+      yomi: ユニティ
+      ref: https://unity.com/ - Gemini AIにより自動追加
+
+    - term: Unreal Engine
+      yomi: アンリアルエンジン
+      ref: https://www.unrealengine.com/ - Gemini AIにより自動追加
+
+    - term: Vim
+      yomi: ヴィム
+      ref: https://www.vim.org/ - Gemini AIにより自動追加
+
+    - term: VirtualBox
+      yomi: バーチャルボックス
+      ref: https://www.virtualbox.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Visual Studio
+      yomi: ビジュアルスタジオ
+      ref: https://visualstudio.microsoft.com/ - Gemini AIにより自動追加
+
+    - term: Visual Studio Code
+      yomi: ビジュアルスタジオコード
+      ref: https://code.visualstudio.com/ - Gemini AIにより自動追加
+
+    - term: Vite
+      yomi: ヴィート
+      ref: https://ja.vitejs.dev/guide/ - Gemini AIにより自動追加
+
+    - term: VPC
+      yomi: ブイピーシー
+      ref: Virtual Private Cloud - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: VS Code
+      yomi: ブイエスコード
+      ref: https://code.visualstudio.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: VSCode
+      yomi: ブイエスコード
+      ref: https://code.visualstudio.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: vscode
+      yomi: ブイエスコード
+      ref: https://code.visualstudio.com/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Vue
+      yomi: ビュー
+      ref: https://vuejs.org/ - Gemini AIにより自動追加
+
+    - term: Vue.js
+      yomi: ビュージェイエス
+      ref: https://vuejs.org/ - Gemini AIにより自動追加
+
+    - term: vue.js
+      yomi: ビュージェイエス
+      ref: https://vuejs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: VueJS
+      yomi: ビュージェイエス
+      ref: https://vuejs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: vuejs
+      yomi: ビュージェイエス
+      ref: https://vuejs.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: Webpack
+      yomi: ウェブパック
+      ref: https://webpack.js.org/ - Gemini AIにより自動追加
+
+    - term: webpack.js
+      yomi: ウェブパックジェイエス
+      ref: https://webpack.js.org/ - Gemini AIにより自動追加（表記ゆれ対応）
+
+    - term: WebRTC
+      yomi: ウェブアールティーシー
+      ref: https://webrtc.org/ - Gemini AIにより自動追加
+
+    - term: WebSocket
+      yomi: ウェブソケット
+      ref: https://developer.mozilla.org/ja/docs/Web/API/WebSocket - Gemini AIにより自動追加
+
+    - term: Windows
+      yomi: ウィンドウズ
+      ref: https://www.microsoft.com/windows/ - Gemini AIにより自動追加
+
+    - term: WordPress
+      yomi: ワードプレス
+      ref: https://wordpress.org/ - Gemini AIにより自動追加
+
+    - term: Xamarin
+      yomi: ザマリン
+      ref: https://dotnet.microsoft.com/apps/xamarin - Gemini AIにより自動追加
+
+    - term: Xcode
+      yomi: エックスコード
+      ref: https://developer.apple.com/xcode/ - Gemini AIにより自動追加
+
+    - term: XML
+      yomi: エックスエムエル
+      ref: Extensible Markup Language - Gemini AIにより自動追加
+
+    - term: YAML
+      yomi: ヤムル
+      ref: https://yaml.org/ - Gemini AIにより自動追加
+
+    - term: Yarn
+      yomi: ヤーン
+      ref: https://yarnpkg.com/ - Gemini AIにより自動追加
+
+    - term: Zsh
+      yomi: ジーシェル
+      ref: https://www.zsh.org/ - Gemini AIにより自動追加
+
+    - term: .NET
+      yomi: ドットネット
+      ref: https://dotnet.microsoft.com/ - Gemini AIにより自動追加
