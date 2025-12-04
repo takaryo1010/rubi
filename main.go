@@ -71,7 +71,7 @@ func run(cfg *Config) error {
 	}
 
 	// Process the Markdown content
-	processedContent, err := ProcessMarkdown(content, cfg.DryRun)
+	processedContent, err := ProcessMarkdown(content, cfg.DryRun, termMap)
 	if err != nil {
 		return fmt.Errorf("failed to process markdown: %w", err)
 	}
