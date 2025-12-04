@@ -12,9 +12,9 @@ import (
 // Helper function to create a simplified termMap for testing
 func createTestTermMap() map[string]Term {
 	return map[string]Term{
-		"Vite": {"Vite", "ヴィート", "https://ja.vitejs.dev/"},
-		"gRPC": {"gRPC", "ジーアールピーシー", "https://grpc.io/"},
-		"Go":   {"Go", "ゴー", ""},
+		"Vite":   {"Vite", "ヴィート", "https://ja.vitejs.dev/"},
+		"gRPC":   {"gRPC", "ジーアールピーシー", "https://grpc.io/"},
+		"Go":     {"Go", "ゴー", ""},
 		"golang": {"golang", "ゴーラング", ""},
 	}
 }
@@ -31,12 +31,12 @@ func TestApplyPatches(t *testing.T) {
 	testTermMap := createTestTermMap()
 
 	tests := []struct {
-		name          string
-		original      []byte
-		patches       []Patch
-		want          []byte
-		wantErr       bool
-		errContains   string
+		name        string
+		original    []byte
+		patches     []Patch
+		want        []byte
+		wantErr     bool
+		errContains string
 	}{
 		{
 			name:     "no patches",
@@ -142,14 +142,14 @@ func TestProcessMarkdown_ManualMode(t *testing.T) {
 	testTermMap := createTestTermMap()
 
 	tests := []struct {
-		name         string
-		input        string
-		dryRun       bool
-		scan         bool
-		firstOnly    bool
-		wantOutput   string
-		wantLogs     []string // Expected substrings in stderr output
-		wantErr      bool
+		name       string
+		input      string
+		dryRun     bool
+		scan       bool
+		firstOnly  bool
+		wantOutput string
+		wantLogs   []string // Expected substrings in stderr output
+		wantErr    bool
 	}{
 		{
 			name:       "basic manual conversion",
@@ -236,7 +236,7 @@ func TestProcessMarkdown_ManualMode(t *testing.T) {
 
 			w.Close()
 			os.Stderr = oldStderr // Restore stderr
-			
+
 			// Read captured stderr
 			stderrBytes, _ := io.ReadAll(r)
 			stderrOutput := string(stderrBytes)
@@ -273,14 +273,14 @@ func TestProcessMarkdown_ScanMode(t *testing.T) {
 	testTermMap := createTestTermMap()
 
 	tests := []struct {
-		name         string
-		input        string
-		dryRun       bool
-		scan         bool
-		firstOnly    bool
-		wantOutput   string
-		wantLogs     []string
-		wantErr      bool
+		name       string
+		input      string
+		dryRun     bool
+		scan       bool
+		firstOnly  bool
+		wantOutput string
+		wantLogs   []string
+		wantErr    bool
 	}{
 		{
 			name:       "basic scan conversion",
@@ -376,7 +376,7 @@ func TestProcessMarkdown_ScanMode(t *testing.T) {
 
 			w.Close()
 			os.Stderr = oldStderr // Restore stderr
-			
+
 			// Read captured stderr
 			stderrBytes, _ := io.ReadAll(r)
 			stderrOutput := string(stderrBytes)
