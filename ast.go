@@ -1,19 +1,74 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"html"
 	"os"
+	"regexp"
+	"sort"
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/text"
 )
 
+// Regex to find "word:rubi". It's a package-level variable to avoid recompilation.
+// Matches one or more word characters (alphanumeric and underscore).
+var rubiRegex = regexp.MustCompile(`(\w+):rubi\b`)
+
+// Patch represents a single change to be applied to the content.
+type Patch struct {
+	Start   int
+	End     int
+	NewText []byte
+}
+
+// ApplyPatches applies a list of patches to the original content.
+// It sorts patches, validates them, and builds the new content in a single pass.
+func ApplyPatches(original []byte, patches []Patch) ([]byte, error) {
+	// Sort patches in forward order by start offset
+	sort.Slice(patches, func(i, j int) bool {
+		return patches[i].Start < patches[j].Start
+	})
+
+	// Validate patches
+	for i := 0; i < len(patches); i++ {
+		p := patches[i]
+		if p.Start < 0 || p.End > len(original) || p.Start > p.End { // Corrected validation
+			return nil, fmt.Errorf("invalid patch bounds: %+v, original length: %d", p, len(original))
+		}
+		// Check for overlapping patches (only if not the first patch)
+		if i > 0 && p.Start < patches[i-1].End {
+			return nil, fmt.Errorf("overlapping patches detected: patch at %d-%d overlaps with patch at %d-%d",
+				patches[i-1].Start, patches[i-1].End, p.Start, p.End)
+		}
+	}
+
+	var buf bytes.Buffer
+	lastIndex := 0
+	for _, p := range patches {
+		// Write content before this patch
+		buf.Write(original[lastIndex:p.Start])
+		// Write the new text for the patch
+		buf.Write(p.NewText)
+		lastIndex = p.End
+	}
+
+	// Write any remaining original content after the last patch
+	buf.Write(original[lastIndex:])
+
+	return buf.Bytes(), nil
+}
+
 // ProcessMarkdown parses the given Markdown content and traverses its AST.
-// It applies the exclusion logic and logs encountered text nodes.
-func ProcessMarkdown(content []byte, dryRun bool) ([]byte, error) {
+// It finds words marked with the ":rubi" suffix and converts them to HTML ruby tags
+// based on the provided term dictionary.
+func ProcessMarkdown(content []byte, dryRun bool, termMap map[string]Term) ([]byte, error) {
 	md := goldmark.New()
 	document := md.Parser().Parse(text.NewReader(content))
+
+	var patches []Patch
 
 	walker := func(n ast.Node, entering bool) (ast.WalkStatus, error) {
 		if !entering {
@@ -22,36 +77,51 @@ func ProcessMarkdown(content []byte, dryRun bool) ([]byte, error) {
 
 		// Implement exclusion logic
 		switch n.Kind() {
-		case ast.KindCodeBlock, ast.KindFencedCodeBlock, ast.KindHTMLBlock, ast.KindRawHTML:
-			if dryRun {
-				fmt.Fprintf(os.Stderr, "Skipping %s node and its children (excluded scope).\n", n.Kind())
-			}
-			return ast.WalkSkipChildren, nil // Skip children of code/HTML blocks
-		case ast.KindCodeSpan:
-			if dryRun {
-				fmt.Fprintf(os.Stderr, "Skipping %s node (inline code).\n", n.Kind())
-			}
-			return ast.WalkSkipChildren, nil // Skip children of inline code
+		case ast.KindCodeBlock, ast.KindFencedCodeBlock, ast.KindHTMLBlock, ast.KindRawHTML, ast.KindCodeSpan:
+			// No dryRun log here for now, to keep output cleaner.
+			// The primary logging for dryRun is for the patches themselves.
+			return ast.WalkSkipChildren, nil
 		case ast.KindLink:
-			if dryRun {
-				fmt.Fprintf(os.Stderr, "Skipping %s node's URL part. Processing text content if any.\n", n.Kind())
-			}
 			return ast.WalkContinue, nil
 		case ast.KindText:
-			// Process text nodes
 			segment := n.(*ast.Text).Segment
-			text := segment.Value(content)
+			textBytes := segment.Value(content)
+			textStr := string(textBytes)
 
-			// For now, just log the text.
-			if dryRun {
-				fmt.Fprintf(os.Stderr, "Found Text Node: '%s' (Offset: %d, Length: %d)\n", text, segment.Start, segment.Len())
+			matches := rubiRegex.FindAllStringSubmatchIndex(textStr, -1)
+			if len(matches) == 0 {
+				return ast.WalkContinue, nil
+			}
+
+			for _, match := range matches {
+				fullMatchStart := segment.Start + match[0]
+				fullMatchEnd := segment.Start + match[1]
+				wordStart := segment.Start + match[2]
+				wordEnd := segment.Start + match[3]
+				
+				originalWordStr := string(content[wordStart:wordEnd])
+
+				if term, found := termMap[originalWordStr]; found {
+					// Term found in dictionary, create ruby tag, escaping HTML characters
+					safeWord := html.EscapeString(originalWordStr)
+					safeYomi := html.EscapeString(term.Yomi)
+					newText := fmt.Sprintf("<ruby>%s<rt>%s</rt></ruby>", safeWord, safeYomi)
+					patches = append(patches, Patch{Start: fullMatchStart, End: fullMatchEnd, NewText: []byte(newText)})
+					if dryRun {
+						fmt.Fprintf(os.Stderr, "GENERATING PATCH: Found '%s:rubi', replace with '%s' (Offset: %d-%d)\n", originalWordStr, newText, fullMatchStart, fullMatchEnd)
+					}
+				} else {
+					// Term not found, remove ":rubi" suffix
+					patches = append(patches, Patch{Start: wordEnd, End: fullMatchEnd, NewText: []byte("")})
+					if dryRun {
+						fmt.Fprintf(os.Stderr, "WARNING: Term '%s' not found in dictionary. The ':rubi' suffix would be removed (dry-run mode, no changes applied).\n", originalWordStr)
+					} else {
+						fmt.Fprintf(os.Stderr, "WARNING: Term '%s' not found in dictionary. Removing ':rubi' suffix.\n", originalWordStr)
+					}
+				}
 			}
 			return ast.WalkContinue, nil
 		default:
-			if dryRun {
-				// Log other node types for debugging
-				fmt.Fprintf(os.Stderr, "Encountered Node: %s\n", n.Kind())
-			}
 			return ast.WalkContinue, nil
 		}
 	}
@@ -60,7 +130,9 @@ func ProcessMarkdown(content []byte, dryRun bool) ([]byte, error) {
 		return nil, fmt.Errorf("error during AST traversal: %w", err)
 	}
 
-	// For this issue, we return the original content.
-	// This will be replaced by actual patching later.
-	return content, nil
+	if dryRun || len(patches) == 0 {
+		return content, nil
+	}
+
+	return ApplyPatches(content, patches)
 }
