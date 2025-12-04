@@ -204,11 +204,11 @@ func downloadDictFile(repo, filePath string) error {
 	}
 	owner := ownerRepo[0]
 	repoName := ownerRepo[1]
-	
+
 	// Use gh api to fetch the raw content
 	// gh api -H "Accept: application/vnd.github.v3.raw" /repos/{owner}/{repo}/contents/dict.yaml
 	cmd := cmdRunner("gh", "api", "-H", "Accept: application/vnd.github.v3.raw", fmt.Sprintf("/repos/%s/%s/contents/dict.yaml", owner, repoName))
-	
+
 	// Capture stdout
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout

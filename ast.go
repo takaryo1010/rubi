@@ -75,7 +75,7 @@ func ProcessMarkdown(content []byte, dryRun bool, scan bool, firstOnly bool, ter
 	var patches []Patch
 	// To track terms for firstOnly. Note: this tracking is case-sensitive based on matched word.
 	// If case-insensitivity is desired, terms should be normalized (e.g., to lowercase) before tracking.
-	processedTerms := make(map[string]bool) 
+	processedTerms := make(map[string]bool)
 
 	walker := func(n ast.Node, entering bool) (ast.WalkStatus, error) {
 		if !entering {
@@ -138,7 +138,7 @@ func ProcessMarkdown(content []byte, dryRun bool, scan bool, firstOnly bool, ter
 					fullMatchEnd := segment.Start + match[1]
 					wordStart := segment.Start + match[2]
 					wordEnd := segment.Start + match[3]
-					
+
 					originalWordStr := string(content[wordStart:wordEnd])
 
 					if term, found := termMap[originalWordStr]; found {
