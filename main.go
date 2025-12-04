@@ -89,8 +89,7 @@ func run(cfg *Config) error {
 	if err != nil {
 		return err
 	}
-	// TODO: This is a placeholder to satisfy the "variable declared and not used" error.
-	_ = termMap
+
 
 	// Read the specified file
 	content, err := os.ReadFile(cfg.InputFile)
