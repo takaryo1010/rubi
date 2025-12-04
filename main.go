@@ -10,6 +10,8 @@ import (
 type Config struct {
 	DictPath  string
 	Write     bool
+	Scan      bool // Reintroduced scan flag
+	FirstOnly bool // New first-only flag
 	Check     bool
 	DryRun    bool
 	InputFile string
@@ -19,6 +21,8 @@ func main() {
 	// 1. Define and parse command-line flags
 	dictPath := flag.String("d", "dict.yaml", "Dictionary file path")
 	write := flag.Bool("w", false, "Write back to the file")
+	scan := flag.Bool("s", false, "Scan mode") // Reintroduced scan flag definition
+	firstOnly := flag.Bool("first-only", false, "Convert only the first occurrence of each term in scan mode") // New first-only flag definition
 	check := flag.Bool("c", false, "Check dictionary validity")
 	dryRun := flag.Bool("dry-run", false, "Dry run mode")
 
@@ -29,17 +33,41 @@ func main() {
 	flag.Parse()
 
 	cfg := &Config{
-		DictPath: *dictPath,
-		Write:    *write,
-		Check:    *check,
-		DryRun:   *dryRun,
+		DictPath:  *dictPath,
+		Write:     *write,
+		Scan:      *scan,      // Assign scan flag
+		FirstOnly: *firstOnly, // Assign first-only flag
+		Check:     *check,
+		DryRun:    *dryRun,
 	}
 
-	// Get the input file path if not in check mode
-	if !cfg.Check && flag.NArg() != 1 {
-		flag.Usage()
-		os.Exit(1)
+	// Logic for flag validation
+	if cfg.Check {
+		if flag.NArg() > 0 {
+			flag.Usage()
+			os.Exit(1)
+		}
+		if cfg.Scan || cfg.FirstOnly || cfg.Write || cfg.DryRun {
+			fmt.Fprintln(os.Stderr, "Error: -c flag cannot be used with other processing flags (-s, --first-only, -w, --dry-run)")
+			os.Exit(1)
+		}
+	} else if cfg.Scan { // Scan mode validation
+		if flag.NArg() != 1 {
+			flag.Usage()
+			os.Exit(1)
+		}
+		// No specific additional checks for scan mode yet, just input file presence
+	} else { // Manual mode validation
+		if cfg.FirstOnly {
+			fmt.Fprintln(os.Stderr, "Error: --first-only flag is only valid in -s (scan) mode")
+			os.Exit(1)
+		}
+		if flag.NArg() != 1 {
+			flag.Usage()
+			os.Exit(1)
+		}
 	}
+	
 	if flag.NArg() == 1 {
 		cfg.InputFile = flag.Arg(0)
 	}
@@ -71,7 +99,7 @@ func run(cfg *Config) error {
 	}
 
 	// Process the Markdown content
-	processedContent, err := ProcessMarkdown(content, cfg.DryRun, termMap)
+	processedContent, err := ProcessMarkdown(content, cfg.DryRun, cfg.Scan, cfg.FirstOnly, termMap)
 	if err != nil {
 		return fmt.Errorf("failed to process markdown: %w", err)
 	}
