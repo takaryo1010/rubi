@@ -1,0 +1,45 @@
+name: Go CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22' # As implicitly updated by goldmark
+
+    - name: Install GitHub CLI
+      run: sudo apt-get update && sudo apt-get install -y gh
+
+    - name: Configure GitHub CLI for testing generate-contributors
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh auth setup-git
+        gh config set prompt disabled
+
+    - name: Run Tests
+      run: go test ./...
+
+    - name: Run Static Analysis (go vet)
+      run: go vet ./...
+
+    - name: Check Formatting (go fmt)
+      run: |
+        go fmt ./...
+        git diff --exit-code
+
+    - name: Build Main Executable
+      run: go build -o rubi .
+
+    - name: Build generate-contributors Tool
+      run: go build -o cmd/generate-contributors/generate-contributors cmd/generate-contributors/main.go
